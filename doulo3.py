@@ -44,7 +44,7 @@ def check_request(url, headers, **kw):
 
 def get_chapter(url):
     kw = {'proxy':''}
-    check_request(url, headers, **kw)
+    r = check_request(url, headers, **kw)
     # r = requests.get(url, headers=headers)
     r.encoding = r.apparent_encoding
     s = etree.HTML(r.text)
@@ -60,7 +60,7 @@ def get_chapter(url):
 
 def get_info(chapter, title):
     kw = {'proxy':''}
-    check_request(chapter, headers, **kw)
+    r =  check_request(chapter, headers, **kw)
     # r = requests.get(chapter, headers=headers)
     r.encoding = r.apparent_encoding
     print(r.text)
@@ -107,4 +107,3 @@ if __name__ == '__main__':
     start = time.time()
     main()
     print('总耗时：%.5f秒' % float(time.time()-start))
-
